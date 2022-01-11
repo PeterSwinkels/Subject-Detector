@@ -158,7 +158,7 @@ Public Class InterfaceWindow
    'This procedure gives the command to load the file dropped into the window.
    Private Sub InterfaceWindow_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
       Try
-         If e.Data.GetDataPresent(DataFormats.FileDrop) Then ImageBox.Image = New Bitmap(DirectCast(e.Data.GetData(DataFormats.FileDrop), String()).First)
+         If e.Data.GetDataPresent(DataFormats.FileDrop) Then SetImage(New Bitmap(DirectCast(e.Data.GetData(DataFormats.FileDrop), String()).First))
       Catch ExceptionO As Exception
          HandleError(ExceptionO)
       End Try
@@ -192,7 +192,7 @@ Public Class InterfaceWindow
    Private Sub OpenImageMenu_Click(sender As Object, e As EventArgs) Handles OpenImageMenu.Click
       Try
          With FileDialogO
-            If .ShowDialog() = DialogResult.OK Then ImageBox.Image = New Bitmap(.FileName)
+            If .ShowDialog() = DialogResult.OK Then SetImage(New Bitmap(.FileName))
          End With
       Catch ExceptionO As Exception
          HandleError(ExceptionO)
@@ -202,7 +202,18 @@ Public Class InterfaceWindow
    'This procedure pastes an image from the clipboard into the highlighting window.
    Private Sub PasteImageMenu_Click(sender As Object, e As EventArgs) Handles PasteImageMenu.Click
       Try
-         ImageBox.Image = My.Computer.Clipboard.GetImage()
+         If My.Computer.Clipboard.ContainsImage() Then SetImage(My.Computer.Clipboard.GetImage())
+      Catch ExceptionO As Exception
+         HandleError(ExceptionO)
+      End Try
+   End Sub
+
+   'This procedure replaces sets the current image to the specified image.
+   Private Sub SetImage(NewImage As Image)
+      Try
+         ImageBox.Image = NewImage
+         Subject = Nothing
+         ImageBox.Invalidate()
       Catch ExceptionO As Exception
          HandleError(ExceptionO)
       End Try
