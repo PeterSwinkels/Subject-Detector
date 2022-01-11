@@ -69,7 +69,7 @@ Public Class InterfaceWindow
    Private Sub HighlightColorMenu_Click(sender As Object, e As EventArgs) Handles HighlightColorMenu.Click
       Try
          ColorDialogO.ShowDialog()
-         Me.Invalidate()
+         ImageBox.Invalidate()
       Catch ExceptionO As Exception
          HandleError(ExceptionO)
       End Try
@@ -181,7 +181,7 @@ Public Class InterfaceWindow
          Integer.TryParse(InputBox("Line width:",, LineWidth.ToString()), NewLineWidth)
          If Not NewLineWidth = Nothing Then
             LineWidth = NewLineWidth
-            Me.Invalidate()
+            ImageBox.Invalidate()
          End If
       Catch ExceptionO As Exception
          HandleError(ExceptionO)
