@@ -99,6 +99,8 @@ Public Class InterfaceWindow
 
             If x1 > x2 Then Swap(x1, x2)
             If y1 > y2 Then Swap(y1, y2)
+            If x1 < 0 Then x1 = 0
+            If y1 < 0 Then y1 = 0
 
             Selection = New Rectangle(x1, y1, x2 - x1, y2 - y1)
 
