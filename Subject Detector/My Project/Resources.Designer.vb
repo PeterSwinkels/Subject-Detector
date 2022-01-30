@@ -39,7 +39,7 @@ Namespace My.Resources
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Subject_Detector.Resources", GetType(Resources).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("SubjectDetectorProgram.Resources", GetType(Resources).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -61,7 +61,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to ***TO BE IMPLEMENTED***.
+        '''  Looks up a localized string similar to Hold the left mouse button to draw a selection rectangle. When the mouse button is released the subject inside the user&apos;s selection will determined. A double click will select the entire image. Hold shift to get non-rectangular subject area..
         '''</summary>
         Friend ReadOnly Property Help() As String
             Get
