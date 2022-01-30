@@ -1,1 +1,0 @@
-Hold the left mouse button to draw a selection rectangle. When the mouse button is released the subject inside the user's selection will determined. A double click will select the entire image. Hold shift to get non-rectangular subject area.
