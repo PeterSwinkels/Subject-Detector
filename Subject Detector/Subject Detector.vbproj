@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{615E043C-48BD-42F5-9BD6-CE0B1A2DA36D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Subject_Detector.My.MyApplication</StartupObject>
-    <RootNamespace>Subject_Detector</RootNamespace>
+    <StartupObject>SubjectDetectorProgram.My.MyApplication</StartupObject>
+    <RootNamespace>SubjectDetectorProgram</RootNamespace>
     <AssemblyName>Subject Detector</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
