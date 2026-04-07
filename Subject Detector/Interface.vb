@@ -43,7 +43,7 @@ Public Class InterfaceWindow
          ToolTipO.SetToolTip(ImageBox, "Press F1 for help.")
          ToolTipO.SetToolTip(Me, "Press F1 for help.")
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -52,7 +52,7 @@ Public Class InterfaceWindow
       Try
          Me.Close()
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -61,7 +61,7 @@ Public Class InterfaceWindow
       Try
          MessageBox.Show(My.Resources.Help, My.Application.Info.Title, MessageBoxButtons.OK, MessageBoxIcon.Information)
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -71,7 +71,7 @@ Public Class InterfaceWindow
          ColorDialogO.ShowDialog()
          ImageBox.Invalidate()
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -84,7 +84,7 @@ Public Class InterfaceWindow
             SelectionStart = New Point(e.X, e.Y)
          End If
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -107,7 +107,7 @@ Public Class InterfaceWindow
             ImageBox.Invalidate()
          End If
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -116,7 +116,7 @@ Public Class InterfaceWindow
       Try
          If e.Button = MouseButtons.Left AndAlso Selection IsNot Nothing AndAlso Selection.Value.Width > 0 AndAlso Selection.Value.Height > 0 Then GetSubject()
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -126,7 +126,7 @@ Public Class InterfaceWindow
          Selection = New Rectangle(0, 0, ImageBox.Image.Width - 1, ImageBox.Image.Height - 1)
          GetSubject()
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -140,7 +140,7 @@ Public Class InterfaceWindow
             e.Graphics.DrawPolygon(New Pen(ColorDialogO.Color, LineWidth), Subject.ToArray())
          End If
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -151,7 +151,7 @@ Public Class InterfaceWindow
             MessageBox.Show($"{ .Title} v{ .Version.ToString()} - by: { .CompanyName}, ***{ .Copyright}***{NewLine}{ .Description}", .Title, MessageBoxButtons.OK, MessageBoxIcon.Information)
          End With
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -160,7 +160,7 @@ Public Class InterfaceWindow
       Try
          If e.Data.GetDataPresent(DataFormats.FileDrop) Then SetImage(New Bitmap(DirectCast(e.Data.GetData(DataFormats.FileDrop), String()).First))
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -169,7 +169,7 @@ Public Class InterfaceWindow
       Try
          If e.Data.GetDataPresent(DataFormats.FileDrop) Then e.Effect = DragDropEffects.All
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -184,7 +184,7 @@ Public Class InterfaceWindow
             ImageBox.Invalidate()
          End If
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -195,7 +195,7 @@ Public Class InterfaceWindow
             If .ShowDialog() = DialogResult.OK Then SetImage(New Bitmap(.FileName))
          End With
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -204,7 +204,7 @@ Public Class InterfaceWindow
       Try
          If My.Computer.Clipboard.ContainsImage() Then SetImage(My.Computer.Clipboard.GetImage())
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -215,7 +215,7 @@ Public Class InterfaceWindow
          Subject = Nothing
          ImageBox.Invalidate()
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -237,7 +237,7 @@ Public Class InterfaceWindow
 
          Me.Invalidate()
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -247,7 +247,7 @@ Public Class InterfaceWindow
          Try
             Return SubjectO
          Catch ExceptionO As Exception
-            HandleError(ExceptionO)
+            DisplayException(ExceptionO)
          End Try
 
          Return New List(Of Point)({})
@@ -259,7 +259,7 @@ Public Class InterfaceWindow
             ImageBox.UseWaitCursor = False
             ImageBox.Cursor = Cursors.Default
          Catch ExceptionO As Exception
-            HandleError(ExceptionO)
+            DisplayException(ExceptionO)
          End Try
       End Set
    End Property

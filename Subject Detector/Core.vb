@@ -32,7 +32,7 @@ Public Module CoreModule
 
          Return StartLine
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return Nothing
@@ -55,7 +55,7 @@ Public Module CoreModule
 
          Return 0
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return Nothing
@@ -76,7 +76,7 @@ Public Module CoreModule
 
          Return CInt(DetailLevels.Average)
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return Nothing
@@ -100,7 +100,7 @@ Public Module CoreModule
 
          Return CInt(DetailLevels.Average)
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return Nothing
@@ -111,11 +111,20 @@ Public Module CoreModule
       Try
          Return CInt(Sqrt((Abs(CInt(ColorO.R) - CInt(OtherColor.R)) ^ 2) + (Abs(CInt(ColorO.G) - CInt(OtherColor.G)) ^ 2) + (Abs(CInt(ColorO.B) - CInt(OtherColor.B)) ^ 2)))
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return Nothing
    End Function
+
+   'This procedure displays any exceptions that occur.
+   Public Sub DisplayException(ExceptionO As Exception)
+      Try
+         If MessageBox.Show(ExceptionO.Message, My.Application.Info.Title, MessageBoxButtons.OKCancel, MessageBoxIcon.Error) = DialogResult.Cancel Then [Exit](0)
+      Catch
+         [Exit](0)
+      End Try
+   End Sub
 
    'This procedure returns the specified image line's detail level.
    Private Function GetDetailLevel(ImageO As Bitmap, Line As Integer, IsHorizontal As Boolean, Direction As Integer, Selection As Rectangle) As Integer
@@ -134,7 +143,7 @@ Public Module CoreModule
 
          Return CInt(DetailLevels.Average)
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return Nothing
@@ -158,7 +167,7 @@ Public Module CoreModule
 
          Return SubjectArea
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return New List(Of Point)({})
@@ -180,20 +189,11 @@ Public Module CoreModule
 
          Return SubjectArea
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return New List(Of Point)({})
    End Function
-
-   'This procedure handles any errors that occur.
-   Public Sub HandleError(ExceptionO As Exception)
-      Try
-         If MessageBox.Show(ExceptionO.Message, My.Application.Info.Title, MessageBoxButtons.OKCancel, MessageBoxIcon.Error) = DialogResult.Cancel Then [Exit](0)
-      Catch
-         [Exit](0)
-      End Try
-   End Sub
 
    'This procedure swaps the two specified variables with each other.
    Public Sub Swap(Of TypeV)(Variable1 As TypeV, Variable2 As TypeV)
@@ -203,7 +203,7 @@ Public Module CoreModule
          Variable1 = Variable2
          Variable2 = Variable3
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
    End Sub
 
@@ -213,7 +213,7 @@ Public Module CoreModule
       Try
          Return Degrees / DEGREES_PER_RADIAN
       Catch ExceptionO As Exception
-         HandleError(ExceptionO)
+         DisplayException(ExceptionO)
       End Try
 
       Return Nothing
